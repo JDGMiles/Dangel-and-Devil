@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><title>Dangel and Devil</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="shortcut icon" href="favicon.ico">
+<!-- <meta name="viewport" content="width=550, initial-scale=1"> -->
+
+</head>
+
+<body><center>
+	<canvas id="canvas" style="padding:0px 80px 0px 80px;"></canvas>
+	<br>
+
+</center></body>
+
+</html>
+
+<script type="text/javascript">
+var field={width:650, height:650};
+var fieldcolor="#AAAAAA";
+var Dan=new Image();
+Dan.src="Dan.jpg";
+
+var fps=65;
+var time=0;
+
+var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d");
+
+canvas.width = field.width;
+canvas.height = field.height;
+
+function draw(){
+
+	ctx.fillStyle=fieldcolor;
+	ctx.fillRect(0, 0, field.width, field.height);
+
+	ctx.drawImage(Dan, 0, 0, 650, 650);
+
+	setTimeout(draw, 1000/fps);
+
+}
+
+draw();
+
+</script>
