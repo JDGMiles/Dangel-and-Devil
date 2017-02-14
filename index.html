@@ -19,9 +19,16 @@ var field={width:650, height:650};
 var fieldcolor="#AAAAAA";
 var Dan=new Image();
 Dan.src="Dan.jpg";
+var Halo=new Image();
+Halo.src="Halo.png";
+var Horns=new Image();
+Horns.src="Horns.png";
+var Trident=new Image();
+Trident.src="Trident.png";
 
 var fps=65;
 var time=0;
+var looptime=400;
 
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
@@ -34,7 +41,19 @@ function draw(){
 	ctx.fillStyle=fieldcolor;
 	ctx.fillRect(0, 0, field.width, field.height);
 
+	ctx.globalAlpha=1;
 	ctx.drawImage(Dan, 0, 0, 650, 650);
+
+	ctx.globalAlpha=1-Math.cos(4*Math.PI*time/looptime);
+
+	if(time<looptime/2){ctx.drawImage(Halo, 524, 380, 110, 80);}
+	else{
+		ctx.drawImage(Horns, 520, 393, 120, 80);
+		ctx.drawImage(Trident, 602, 478, 50, 70);
+	}
+
+	time++;
+	if(time==looptime){time=0;}
 
 	setTimeout(draw, 1000/fps);
 
